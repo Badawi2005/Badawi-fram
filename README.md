@@ -1,160 +1,84 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BADAWI FRAM - Jual Telur</title>
-  <style>
-    /* Background gambar full */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('images/background.jpg'); /* ganti dengan gambar ayam/telur */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart, Truck, ShieldCheck, Phone } from "lucide-react";
 
-    /* Header */
-    header {
-      background: rgba(255, 204, 0, 0.85); /* semi-transparan */
-      padding: 20px;
-      text-align: center;
-      backdrop-filter: blur(4px);
-    }
-    header h1 {
-      margin: 0;
-      color: #333;
-    }
-    .logo {
-      width: 150px;
-      margin-bottom: 10px;
-    }
+export default function BadawiFramTelurShop() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-orange-100 text-slate-800">
+      {/* HERO */}
+      <section className="py-20 px-6 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-5xl font-bold mb-4"
+        >
+          BADAWI FRAM EGG STORE
+        </motion.h1>
+        <p className="text-lg text-slate-600 max-w-xl mx-auto mb-6">
+          Penjualan telur ayam segar – grosir & eceran. Langsung dari peternak, harga jujur.
+        </p>
+        <Button className="rounded-2xl px-8 py-5 text-lg">
+          <ShoppingCart className="mr-2" /> Pesan via WhatsApp
+        </Button>
+      </section>
 
-    /* Container */
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.95); /* putih semi-transparan */
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
+      {/* PRODUK */}
+      <section className="px-6 pb-16">
+        <h2 className="text-3xl font-semibold text-center mb-10">Produk Kami</h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Product name="Telur eceran" price="Rp 27.000 / kg" desc="Segar setiap hari" />
+          
+          <Product name="Telur Grosir" price="Rp 25.800 / kg" desc="Untuk warung & UMKM" />
+        </div>
+      </section>
 
-    .price {
-      font-size: 20px;
-      color: #2e7d32;
-      margin: 10px 0;
-      font-weight: bold;
-    }
+      {/* KEUNGGULAN */}
+      <section className="bg-white py-16 px-6">
+        <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto text-center">
+          <Benefit icon={<Truck />} title="Pengiriman Cepat" desc="Area lokal & sekitar" />
+          <Benefit icon={<ShieldCheck />} title="Kualitas Terjamin" desc="Sortir & bersih" />
+          <Benefit icon={<ShoppingCart />} title="Harga Stabil" desc="Langsung peternak" />
+          <Benefit icon={<Phone />} title="Mudah Order" desc="WA & Online" />
+        </div>
+      </section>
 
-    label, select, input {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    select, input {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
+      {/* CTA */}
+      <section className="py-16 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Siap Order Telur Hari Ini?</h2>
+        <p className="text-slate-600 mb-2">Order langsung via WhatsApp (tanpa ongkir per wilayah).</p>
+        <p className="text-slate-600 mb-6">Pembayaran: Crypto • DANA • ShopeePay</p>
+        <Button className="rounded-2xl px-8 py-5 text-lg">Order via WhatsApp</Button>
+      </section>
 
-    button {
-      margin-top: 20px;
-      padding: 14px;
-      width: 100%;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .btn-green { background: #25D366; color: #fff; }
-    .btn-yellow { background: #ffcc00; color: #333; }
-    .btn-green:hover { background: #1ebe5a; transform: scale(1.03); }
-    .btn-yellow:hover { background: #e6b800; transform: scale(1.03); }
+      {/* FOOTER */}
+      <footer className="text-center py-6 text-slate-500 text-sm">
+        © {new Date().getFullYear()} BADAWI FRAM – Penjualan Telur Segar
+      </footer>
+    </div>
+  );
+}
 
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #fff;
-      font-size: 14px;
-      text-shadow: 1px 1px 2px #000;
-    }
+function Product({ name, price, desc }) {
+  return (
+    <Card className="rounded-2xl shadow-md">
+      <CardContent className="p-6 text-center">
+        <h3 className="text-xl font-semibold mb-2">{name}</h3>
+        <p className="text-slate-500 mb-2">{desc}</p>
+        <p className="font-bold text-lg mb-4">{price}</p>
+        <Button className="rounded-xl w-full">Tambah ke Keranjang</Button>
+      </CardContent>
+    </Card>
+  );
+}
 
-    img.main-photo {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
-    }
-
-  </style>
-</head>
-<body>
-
-  <header>
-    <img src="images/logo.png" alt="BADAWI FRAM Logo" class="logo" />
-    <h1>BADAWI FRAM</h1>
-    <p>Jual Telur Ayam Segar</p>
-    <p>Alamat: JALAN RANGGA KUSUMA SLAGI RT 13 RW 3</p>
-  </header>
-
-  <div class="container">
-    <img src="images/main.png" class="main-photo" alt="Telur BADAWI FRAM">
-
-    <label for="jenis">Pilih Jenis Harga</label>
-    <select id="jenis" onchange="setHarga()">
-      <option value="25800">Grosir - Rp 25.800 / kg</option>
-      <option value="27000">Ecer - Rp 27.000 / kg</option>
-    </select>
-
-    <label for="inputHarga">Harga per Kg (Rp)</label>
-    <input type="number" id="inputHarga" value="25800" readonly />
-
-    <label for="inputKg">Jumlah (Kg)</label>
-    <input type="number" id="inputKg" placeholder="Contoh: 2" />
-
-    <div class="price" id="total">Total: Rp 0</div>
-
-    <button class="btn-yellow" onclick="hitungTotal()">Hitung Total</button>
-    <button class="btn-green" onclick="orderWhatsApp()">Order via WhatsApp</button>
-  </div>
-
-  <footer>
-    © 2026 BADAWI FRAM
-  </footer>
-
-  <script>
-    function setHarga() {
-      const harga = document.getElementById('jenis').value;
-      document.getElementById('inputHarga').value = harga;
-    }
-
-    function hitungTotal() {
-      const harga = document.getElementById('inputHarga').value;
-      const kg = document.getElementById('inputKg').value;
-      if(harga > 0 && kg > 0) {
-        const total = harga * kg;
-        document.getElementById('total').innerText = 'Total: Rp ' + total;
-      } else {
-        alert('Masukkan harga dan jumlah kg');
-      }
-    }
-
-    function orderWhatsApp() {
-      const harga = document.getElementById('inputHarga').value;
-      const kg = document.getElementById('inputKg').value;
-      const total = harga * kg;
-      const jenis = document.getElementById('jenis').options[document.getElementById('jenis').selectedIndex].text;
-      const pesan = `Halo BADAWI FRAM, saya mau pesan telur. ${jenis}, Jumlah: ${kg} kg, Total: Rp ${total}`;
-      const noWA = '6282132698172';
-      const url = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
-      window.open(url, '_blank');
-    }
-  </script>
-</body>
-</html>
+// Benefit section
+function Benefit({ icon, title, desc }) {
+  return (
+    <div>
+      <div className="flex justify-center mb-3 text-orange-500">{icon}</div>
+      <h4 className="font-semibold mb-1">{title}</h4>
+      <p className="text-slate-500 text-sm">{desc}</p>
+    </div>
+  );
+}
