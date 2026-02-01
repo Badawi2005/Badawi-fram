@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -103,3 +103,50 @@
   </script>
 </body>
 </html>
+<!-- PEMBAYARAN -->
+<section class="px-6 py-20 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-semibold text-center mb-12">Metode Pembayaran</h2>
+
+  <div class="grid md:grid-cols-3 gap-8 text-center">
+    <!-- BANK -->
+    <div class="bg-white/5 p-8 rounded-2xl">
+      <h3 class="text-xl font-semibold mb-3">Transfer Bank</h3>
+      <p class="text-slate-300 text-sm">
+        BCA • BRI • Mandiri • BNI
+      </p>
+      <p class="text-slate-400 text-xs mt-2">
+        Nomor rekening dikirim via WhatsApp
+      </p>
+    </div>
+
+    <!-- E-WALLET -->
+    <div class="bg-white/5 p-8 rounded-2xl">
+      <h3 class="text-xl font-semibold mb-3">E-Wallet</h3>
+      <p class="text-slate-300 text-sm">
+        DANA • ShopeePay
+      </p>
+      <p class="text-slate-400 text-xs mt-2">
+        Pembayaran cepat & praktis
+      </p>
+    </div>
+
+    <!-- COD -->
+    <div class="bg-white/5 p-8 rounded-2xl">
+      <h3 class="text-xl font-semibold mb-3">COD</h3>
+      <p class="text-slate-300 text-sm">
+        Bayar di tempat
+      </p>
+      <p class="text-slate-400 text-xs mt-2">
+        Area sekitar Jepara
+      </p>
+    </div>
+  </div>
+
+  <div class="text-center mt-10">
+    <a href="https://wa.me/6282132698172?text=Halo%20Badawi%20Farm,%20saya%20ingin%20konfirmasi%20pembayaran"
+       class="inline-block bg-green-500 hover:bg-green-600 px-8 py-4 rounded-xl font-semibold">
+      Konfirmasi Pembayaran via WhatsApp
+    </a>
+  </div>
+</section>
+
