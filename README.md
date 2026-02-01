@@ -1,160 +1,105 @@
-export const metadata = {
-  title: "Badawi Farm",
-  description: "Supplier Telur Ayam Petelur Jepara",
-};
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Badawi Farm – Supplier Telur Ayam Jepara</title>
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="id">
-      <body style={{ margin: 0 }}>{children}</body>
-    </html>
-  );
-}
-'use client';
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-import BadawiFarmWebsite from "@/components/BadawiFarmWebsite";
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-b from-slate-900 to-slate-950 text-white">
 
-export default function Page() {
-  return <BadawiFarmWebsite />;
-}
-'use client';
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6282132698172?text=Halo%20Badawi%20Farm,%20saya%20ingin%20order%20telur"
+     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 px-5 py-3 rounded-full shadow-xl flex items-center gap-2 z-50">
+    <i data-lucide="message-circle"></i> WhatsApp
+  </a>
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import {
-  ShoppingCart,
-  Phone,
-  MessageCircle,
-  ShieldCheck,
-  Truck,
-  Egg,
-} from "lucide-react";
+  <!-- HERO -->
+  <section class="text-center px-6 py-24">
+    <h1 class="text-4xl md:text-6xl font-bold">BADAWI FARM</h1>
+    <p class="mt-4 text-slate-300">
+      Supplier Telur Ayam Petelur • Grosir & Eceran
+    </p>
 
-const WA_NUMBER = "6282132698172";
+    <p class="mt-4 text-sm text-slate-400">
+      📍 Jepara, Jawa Tengah – Slagi, Jl. Rangga Kusuma RT 13 RW 3  
+      <br/>🕙 Jam Operasional: 10.00 – 17.00
+    </p>
 
-const WA_MESSAGE = encodeURIComponent(`Halo Badawi Farm 👋
-
-Saya ingin order / tanya harga telur ayam.
-
-Nama:
-Jenis pembelian (Eceran / Grosir):
-Jumlah:
-Alamat kirim:`);
-
-export default function BadawiFarmWebsite() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#020617] text-white">
-
-      {/* FLOATING WHATSAPP */}
-      <a
-        href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-        target="_blank"
-        className="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-green-500 hover:bg-green-600 px-5 py-3 rounded-full shadow-2xl"
-      >
-        <MessageCircle /> WhatsApp
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/6282132698172?text=Halo%20Badawi%20Farm,%20saya%20ingin%20order%20telur"
+         class="bg-amber-400 text-black px-8 py-4 rounded-xl font-semibold">
+        Order via WhatsApp
       </a>
-
-      {/* HERO */}
-      <section className="container mx-auto px-6 py-24 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold"
-        >
-          BADAWI FARM
-        </motion.h1>
-
-        <p className="mt-6 text-lg text-slate-300">
-          Supplier Telur Ayam Berkualitas • Grosir & Eceran
-        </p>
-
-        <p className="mt-4 text-sm text-slate-400">
-          📍 Slagi, Jepara – Jawa Tengah <br />
-          Jl. Rangga Kusuma RT 13 / RW 03 <br />
-          🕒 10.00 – 17.00 WIB
-        </p>
-
-        <div className="mt-10 flex justify-center gap-4 flex-wrap">
-          <Button
-            className="rounded-2xl px-8 py-6"
-            onClick={() =>
-              window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`, "_blank")
-            }
-          >
-            <ShoppingCart className="mr-2" /> Pesan Sekarang
-          </Button>
-
-          <Button
-            variant="outline"
-            className="rounded-2xl px-8 py-6"
-            onClick={() =>
-              window.open(
-                `https://wa.me/${WA_NUMBER}?text=Halo%20Badawi%20Farm,%20saya%20ingin%20bertanya`,
-                "_blank"
-              )
-            }
-          >
-            <Phone className="mr-2" /> Hubungi Kami
-          </Button>
-        </div>
-      </section>
-
-      {/* INFO STOK */}
-      <section className="text-center py-10">
-        <div className="inline-block bg-emerald-500/10 border border-emerald-500/30 px-6 py-4 rounded-2xl">
-          <p className="text-emerald-400 font-semibold text-lg">
-            📦 Stok Hari Ini: TERSEDIA
-          </p>
-          <p className="text-sm text-slate-400">Update: Hari ini</p>
-        </div>
-      </section>
-
-      {/* KEUNGGULAN */}
-      <section className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-8">
-          {[ 
-            { icon: Egg, title: "Telur Segar", desc: "Langsung dari peternak" },
-            { icon: ShieldCheck, title: "Kualitas Terjaga", desc: "Sortir & bersih" },
-            { icon: Truck, title: "Pengiriman", desc: "Area sekitar Jepara" }
-          ].map((item, i) => (
-            <Card key={i} className="bg-white/5 border-white/10 rounded-2xl">
-              <CardContent className="p-8 text-center">
-                <item.icon className="mx-auto mb-4 text-amber-400" size={36} />
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="text-slate-300 text-sm">{item.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="text-center py-12 text-slate-400">
-        <p className="text-white font-semibold">BADAWI FARM</p>
-        <p>Peternakan & Supplier Telur Ayam</p>
-        <p className="text-sm mt-2">
-          © {new Date().getFullYear()} Badawi Farm
-        </p>
-      </footer>
-
-      {/* MOBILE CTA */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-[#020617] p-4">
-        <Button
-          className="w-full py-6 rounded-xl"
-          onClick={() =>
-            window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`, "_blank")
-          }
-        >
-          <ShoppingCart className="mr-2" /> Order via WhatsApp
-        </Button>
-      </div>
-
+      <a href="https://wa.me/6282132698172?text=Halo%20Badawi%20Farm,%20saya%20ingin%20bertanya"
+         class="border border-white/30 px-8 py-4 rounded-xl">
+        Hubungi Kami
+      </a>
     </div>
-  );
-}
+  </section>
+
+  <!-- INFO STOK -->
+  <section class="text-center px-6 py-8">
+    <div class="inline-block bg-green-500/20 text-green-400 px-6 py-3 rounded-full">
+      📦 Stok Hari Ini: TERSEDIA
+    </div>
+  </section>
+
+  <!-- KEUNGGULAN -->
+  <section class="px-6 py-20 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold text-center mb-12">Kenapa Pilih Badawi Farm?</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white/5 p-8 rounded-2xl">
+        🥚
+        <h3 class="text-xl font-semibold mt-4">Telur Segar</h3>
+        <p class="text-slate-300 text-sm">Langsung dari peternakan</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl">
+        🛡️
+        <h3 class="text-xl font-semibold mt-4">Kualitas Terjaga</h3>
+        <p class="text-slate-300 text-sm">Sortir & bersih</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl">
+        🚚
+        <h3 class="text-xl font-semibold mt-4">Pengiriman Cepat</h3>
+        <p class="text-slate-300 text-sm">Area sekitar Jepara</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HARGA -->
+  <section class="px-6 py-20 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold text-center mb-12">Harga Telur</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white/5 p-8 rounded-2xl">
+        <h3 class="text-xl font-semibold">Eceran</h3>
+        <p class="text-amber-400 text-2xl mt-4">Tanya Admin</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl">
+        <h3 class="text-xl font-semibold">Grosir</h3>
+        <p class="text-amber-400 text-2xl mt-4">Tanya Admin</p>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl">
+        <h3 class="text-xl font-semibold">Grosir Besar</h3>
+        <p class="text-amber-400 text-2xl mt-4">Tanya Admin</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-16 text-slate-400">
+    <p class="font-semibold text-white">BADAWI FARM</p>
+    <p class="text-sm mt-2">Peternakan & Supplier Telur Ayam</p>
+    <p class="text-xs mt-4">© 2026 Badawi Farm</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
